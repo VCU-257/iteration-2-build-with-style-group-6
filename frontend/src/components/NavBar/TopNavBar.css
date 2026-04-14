@@ -1,0 +1,20 @@
+#companyLogo{
+    padding: 5px;
+    padding-right:0px;
+
+    color: #2162a1;
+    
+}
+
+#navBarContainer{
+    background-color: #0f1111;
+    color:white;
+    border:solid black .5px;
+    margin:0px;
+    padding:5px;
+}
+
+.navbar{
+    padding:0px;
+}
+
