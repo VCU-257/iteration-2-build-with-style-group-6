@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// Using name, username, email, password currently
 const userSchema = new mongoose.Schema(
   {
     name: {
