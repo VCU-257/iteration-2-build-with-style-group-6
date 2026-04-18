@@ -1,67 +1,53 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './Checkout.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import SectionOutline from '../components/SectionOutline.jsx'
 
 export default function Checkout() {
   return (
-    <div className="container py-5">
-      <div className="row justify-content-center">
-        <div className="col-12 col-md-8 col-lg-6">
+      <SectionOutline label="Checkout">
+          <div className="card">
 
-          {/* Main Content Area */}
-          <div className="p-4 bg-light border rounded">
+              <div class="card-header">
+                  <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                  <h4>Items</h4>
+                <dt class="col-sm-8"> Painting</dt>
+                <dd class="col-sm-4"> $67.00 </dd>
+                <dt class="col-sm-8"> Giant Metal Sculpture</dt>
+                <dd class="col-sm-4"> $1000.00 </dd>
+                </li>
+                <li class="list-group-item">
+                    <h4>Shipping</h4>
+                <dt class="col-sm-8"> Free</dt>
+                </li>
+                <li class="list-group-item">
+                  <h4>Address</h4>
+                <p>123 ABC Street<br />Neverland, OH 23220</p>
 
-            {/* 1. Order Summary Card */}
-            <div className="card mb-4 shadow-sm">
-              <div className="card-body">
-                <h5 className="card-title h6 text-uppercase text-muted">Order Summary</h5>
-                <dl className="row mb-0 mt-3">
+                </li>
+                <li class="list-group-item">
+                  <h4>Payment Method</h4>
+                <dt class="col-sm-8"> Card Type:</dt>
+                <dd class="col-sm-4"> Visa ending in 1234 </dd>
 
-                  {/* Item List */}
-                  <dt className="col-sm-8 fw-normal text-muted">Painting</dt>
-                  <dd className="col-sm-4 text-end">$67.00</dd>
+                </li>
+                <li class="list-group-item">
+                  <h4>Estimated Delivery Date</h4>
+                <p>Friday, Oct 13th</p>
 
-                  <dt className="col-sm-8 fw-normal text-muted">Giant Metal Sculpture</dt>
-                  <dd className="col-sm-4 text-end">$1000.00</dd>
-
-                  {/* Shipping and Total */}
-                  <dt className="col-sm-6 text-muted mt-2 border-top pt-2">Shipping:</dt>
-                  <dd className="col-sm-6 text-end mt-2 border-top pt-2">Free</dd>
-
-                  <dt className="col-sm-6 fw-bold border-top pt-2 mt-2">Total:</dt>
-                  <dd className="col-sm-6 text-end fw-bold border-top pt-2 mt-2">$1067.00</dd>
-                </dl>
+                </li>
+                </ul>
               </div>
-            </div>
+          <a class="btn btn-primary" href="/order-confirmation" role="button">Checkout</a>
 
-            {/* 2. Checkout Details */}
-            <div className="mb-4">
-              <h5 className="h6 text-uppercase text-muted mb-3">Address</h5>
-              <p className="mb-0">123 ABC Street<br />Neverland, OH 23220</p>
-            </div>
-
-            <div className="mb-4">
-              <h5 className="h6 text-uppercase text-muted mb-3">Payment Method</h5>
-              <dl className="row mb-0">
-                <dt className="col-sm-4 text-muted">Card Type:</dt>
-                <dd className="col-sm-8">Visa ending in 1234</dd>
-              </dl>
-            </div>
-
-            <div className="mb-4">
-              <h5 className="h6 text-uppercase text-muted mb-3">Time of Arrival</h5>
-              <p>Estimated: Friday, Oct 13th</p>
-            </div>
-
-            {/* 3. Checkout Button*/}
-            <div className="d-grid gap-2 mt-5">
-              <Link to="/order-confirmation" className="btn btn-primary btn-lg">
-                Checkout
-              </Link>
-            </div>
           </div>
-        </div>
-      </div>
-    </div>
-  )
+
+
+
+      </SectionOutline>
+
+
+      )
 }

@@ -1,0 +1,17 @@
+header{
+    font-family: "Playfair Display";
+    font-weight: 579;
+}
+body{
+    font-family: Montserrat;
+    font-weight: 435;
+}
+:root{
+    --primary-color : #34936A;
+    --secondary-color : #F4A259;
+    --background-color : #F8F9FA;
+}
+footer{
+    background-color: #52796F;
+    color: #292929FF;
+}
