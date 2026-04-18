@@ -1,16 +1,17 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function ReturnsOrders() {
   const navigate = useNavigate();
 
-  // Test State: true = "user is logged in, will navigate to return page", false = "user not logged in, go to login page" 
-  // Replace this with an actual user authentication check later
-  const [isLoggedIn] = useState(false);
+  // Get user from localStorage
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  // Determine login state
+  const isLoggedIn = !!user?.token;
 
   const handleClick = () => {
     if (isLoggedIn) {
-      // Navigate to orders page (placeholder)
+      // Navigate to orders page
       navigate('/orders');
     } else {
       // Navigate to login page
@@ -26,14 +27,16 @@ export default function ReturnsOrders() {
     >
       {/* Top small text */}
       <span
-        style={{ fontSize: '12px', color: 'white', lineHeight: '14px' }}>
+        style={{ fontSize: '12px', color: 'white', lineHeight: '14px' }}
+      >
         Returns
       </span>
 
       {/* Bottom bold text */}
       <span
         className="fw-bold"
-        style={{ color: 'white', fontSize: '14px', lineHeight: '15px' }}>
+        style={{ color: 'white', fontSize: '14px', lineHeight: '15px' }}
+      >
         & Orders
       </span>
     </div>
