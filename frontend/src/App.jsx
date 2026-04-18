@@ -13,7 +13,7 @@ import Signup from './pages/Signup.jsx'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '') || undefined}>
       <div className="d-flex flex-column min-vh-100">
         <TopNavBar />
         <main className="flex-grow-1 container py-4">
