@@ -7,7 +7,7 @@ import Account from './pages/Account.jsx'
 import AccountHome from './pages/AccountHome.jsx'
 import Wishlist from './pages/Wishlist.jsx'
 import OrderConfirmation from './pages/OrderConfirmation.jsx'
-import TopNavBar from './components/NavBar/TopNavBar.jsx'
+import TopNavBar from './components/NavBar/TopNavbar.jsx'
 import BottomNavBar from './components/BottomNavBar/BottomNavBar.jsx'
 import Signup from './pages/Signup.jsx'
 
