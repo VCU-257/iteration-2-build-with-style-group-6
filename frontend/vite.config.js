@@ -5,7 +5,11 @@ import { fileURLToPath } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
+// GitHub Pages project sites live under /<repo>/; CI sets VITE_BASE_PATH (e.g. /my-repo/).
+const base = process.env.VITE_BASE_PATH || '/'
+
 export default defineConfig({
+  base,
   plugins: [
     react({
       include: '**/*.{jsx,js}',
