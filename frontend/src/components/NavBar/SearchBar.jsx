@@ -27,7 +27,9 @@ export default function SearchBar() {
           type="button"
           style={{ backgroundColor: '#febd69', padding: '0 15px' }}
         >
-          <span style={{ fontSize: '20px', fontWeight: 'bold' }}>🔍</span>
+          <span style={{ fontSize: '20px', fontWeight: 'bold' }}>
+            <i class="bi bi-search"></i>
+          </span>
         </button>
         
       </div>

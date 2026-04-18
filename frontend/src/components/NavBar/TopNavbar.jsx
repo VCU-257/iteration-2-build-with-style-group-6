@@ -7,6 +7,7 @@ import AccountMenu from './AccountMenu.jsx';
 import ReturnsOrders from './ReturnsOrders.jsx';
 import Cart from './Cart.jsx';
 import './TopNavBar.css';
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 export default function TopNavBar() {
   return (
