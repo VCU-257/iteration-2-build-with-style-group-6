@@ -28,7 +28,7 @@ export default function SearchBar() {
           style={{ backgroundColor: '#febd69', padding: '0 15px' }}
         >
           <span style={{ fontSize: '20px', fontWeight: 'bold' }}>
-            <i class="bi bi-search"></i>
+            <i className="bi bi-search"></i>
           </span>
         </button>
         
