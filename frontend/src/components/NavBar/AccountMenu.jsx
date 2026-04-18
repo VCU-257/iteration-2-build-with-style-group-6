@@ -12,7 +12,7 @@ export default function AccountMenu() {
 
   const handleClick = () => {
     if (isLoggedIn) {
-      navigate('/account');
+      navigate('/account-home');
     } else {
       navigate('/login');
     }
@@ -28,7 +28,9 @@ export default function AccountMenu() {
       <span
         style={{ fontSize: '12px', color: 'white', lineHeight: '14px' }}
       >
-        {isLoggedIn ? `Hello, ${userName}` : 'Sign in'}
+        {isLoggedIn
+          ? `Hello, ${userName.charAt(0).toUpperCase() + userName.slice(1)}`
+          : 'Sign in'}
       </span>
 
       {/* Bottom bold text */}
