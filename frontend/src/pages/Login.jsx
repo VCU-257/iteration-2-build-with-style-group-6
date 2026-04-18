@@ -42,8 +42,8 @@ export default function Login() {
 
       console.log("Login success:", data);
 
-      // store token
-      localStorage.setItem("token", data.token);
+      // ✅ Store full user object (includes token, username, email, etc.)
+      localStorage.setItem("user", JSON.stringify(data));
 
       alert("Login successful!");
 
