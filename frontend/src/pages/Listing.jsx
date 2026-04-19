@@ -7,7 +7,7 @@ import './Listing.css';
 export default function Listing() {
   const { id } = useParams(); 
   const [isAddedToCart, setIsAddedToCart] = useState(false);
-  const [isSaved, setIsSaved] = useState(false);  
+  const [isSaved, setIsSaved] = useState(false); 
 
   const product = sampleListings.find(item => item.id === id);
 
