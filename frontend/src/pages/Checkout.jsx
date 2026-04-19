@@ -89,7 +89,7 @@ export default function Checkout() {
 
     <h4 className="mb-3">Guest Checkout</h4>
 
-    {/* 🧾 CUSTOMER INFO */}
+    {/* CUSTOMER INFO */}
     <div className="mb-3">
       <h5 className="mb-2">Shipping Information</h5>
 
@@ -132,7 +132,7 @@ export default function Checkout() {
       </div>
     </div>
 
-    {/* 💳 PAYMENT SECTION (SEPARATE CONTAINER) */}
+    {/* PAYMENT SECTION (SEPARATE CONTAINER) */}
     <div className="border rounded p-3 mb-3 bg-light">
       <h5 className="mb-3">Payment Information</h5>
 
