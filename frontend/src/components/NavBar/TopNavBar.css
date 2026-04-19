@@ -1,20 +1,46 @@
-#companyLogo{
-    padding: 5px;
-    padding-right:0px;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Playfair+Display:wght@500;700&display=swap');
 
-    color: #2162a1;
-    
+.top-navbar-shell {
+  background-color: #52796f;
 }
 
-#navBarContainer{
-    background-color: #0f1111;
-    color:white;
-    border:solid black .5px;
-    margin:0px;
-    padding:5px;
+.top-navbar-theme {
+  background-color: #52796f;
+  padding: 0;
 }
 
-.navbar{
-    padding:0px;
+#navBarContainer {
+  background-color: #52796f;
+  color: #292929;
+  border: 1px solid #3f6359;
+  margin: 0;
+  padding: 8px 10px;
+}
+
+#companyLogo {
+  padding: 5px 0 5px 5px;
+  color: #292929;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+}
+
+#companyLogo:hover,
+#companyLogo:focus {
+  color: #f8f9fa;
+}
+
+#navBarContainer .btn,
+#navBarContainer div,
+#navBarContainer span,
+#navBarContainer i {
+  color: #292929 !important;
+  font-family: 'Montserrat', sans-serif;
+}
+
+#navBarContainer .btn:hover,
+#navBarContainer .btn:focus {
+  background-color: #f4a259 !important;
+  color: #292929 !important;
 }
 
