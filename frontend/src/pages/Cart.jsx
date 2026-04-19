@@ -32,95 +32,128 @@ export default function Cart() {
     setCartItems((prev) => [...prev, item]);
   };
 
+  // 💰 subtotal
+  const subtotal = cartItems.reduce((sum, item) => sum + item.price, 0);
+
   return (
     <div className="container py-4">
-
-      {/* 🔥 CHECKOUT BAR (NOW AT TOP) */}
-      <div className="d-flex justify-content-end mb-4">
-        <Link
-          to="/checkout"
-          className="btn btn-primary"
-          onClick={(e) => {
-            if (cartItems.length === 0) {
-              e.preventDefault();
-              alert("Your cart is empty. Add items before checking out.");
-            }
-          }}
-        >
-          Proceed to Checkout
-        </Link>
-      </div>
-
       <h2 className="mb-4">Your Cart</h2>
 
-      {/* CART ITEMS */}
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        cartItems.map((item) => (
-          <div key={item.id} className="row mb-4 border p-3 rounded">
-            <div className="col-md-3">
-              <img
-                src={item.image}
-                alt={item.name}
-                className="img-fluid"
-              />
-            </div>
+      <div className="row">
 
-            <div className="col-md-6">
-              <h4>{item.name}</h4>
-              <p className="text-muted">{item.description}</p>
-              <h5>${item.price}</h5>
-            </div>
+        {/* 🔹 LEFT SIDE: CART ITEMS */}
+        <div className="col-md-8">
 
-            <div className="col-md-3 d-flex flex-column justify-content-center">
-              <button
-                className="btn btn-secondary mb-2"
-                onClick={() => handleSaveForLater(item)}
+          {cartItems.length === 0 ? (
+            <p>Your cart is empty.</p>
+          ) : (
+            cartItems.map((item) => (
+              <div key={item.id} className="row mb-4 border p-3 rounded">
+                <div className="col-md-3">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="img-fluid"
+                  />
+                </div>
+
+                <div className="col-md-6">
+                  <h4>{item.name}</h4>
+                  <p className="text-muted">{item.description}</p>
+                  <h5>${item.price}</h5>
+                </div>
+
+                <div className="col-md-3 d-flex flex-column justify-content-center">
+                  <button
+                    className="btn btn-secondary mb-2"
+                    onClick={() => handleSaveForLater(item)}
+                  >
+                    Save for Later
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
+
+          {/* SAVED FOR LATER */}
+          <h4 className="mt-5 mb-3">Saved for Later</h4>
+
+          {savedItems.length === 0 ? (
+            <p>No saved items.</p>
+          ) : (
+            savedItems.map((item) => (
+              <div
+                key={item.id}
+                className="row mb-4 border p-3 rounded bg-light"
               >
-                Save for Later
-              </button>
+                <div className="col-md-3">
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="img-fluid"
+                  />
+                </div>
+
+                <div className="col-md-6">
+                  <h4>{item.name}</h4>
+                  <p className="text-muted">{item.description}</p>
+                  <h5>${item.price}</h5>
+                </div>
+
+                <div className="col-md-3 d-flex flex-column justify-content-center">
+                  <button
+                    className="btn btn-secondary"
+                    onClick={() => handleMoveToCart(item)}
+                  >
+                    Move to Cart
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
+        {/* 🔹 RIGHT SIDE: SUMMARY */}
+        <div className="col-md-4">
+
+          <div className="border rounded p-3 sticky-top" style={{ top: "20px" }}>
+            <h4 className="mb-3">Order Summary</h4>
+
+            <p className="d-flex justify-content-between">
+              <span>Items:</span>
+              <span>{cartItems.length}</span>
+            </p>
+
+            <p className="d-flex justify-content-between">
+              <span>Subtotal:</span>
+              <span>${subtotal.toFixed(2)}</span>
+            </p>
+
+            <hr />
+
+            <div className="d-flex justify-content-between fw-bold mb-3">
+              <span>Total:</span>
+              <span>${subtotal.toFixed(2)}</span>
             </div>
+
+            <Link
+              to="/checkout"
+              className={`btn btn-primary w-100 ${
+                cartItems.length === 0 ? "disabled" : ""
+              }`}
+              onClick={(e) => {
+                if (cartItems.length === 0) {
+                  e.preventDefault();
+                  alert("Your cart is empty. Add items before checking out.");
+                }
+              }}
+            >
+              Proceed to Checkout
+            </Link>
           </div>
-        ))
-      )}
 
-      {/* SAVED FOR LATER */}
-      <h3 className="mb-3 mt-5">Saved for Later</h3>
-
-      {savedItems.length === 0 ? (
-        <p>No saved items.</p>
-      ) : (
-        savedItems.map((item) => (
-          <div
-            key={item.id}
-            className="row mb-4 border p-3 rounded bg-light"
-          >
-            <div className="col-md-3">
-              <img
-                src={item.image}
-                alt={item.name}
-                className="img-fluid"
-              />
-            </div>
-
-            <div className="col-md-6">
-              <h4>{item.name}</h4>
-              <p className="text-muted">{item.description}</p>
-              <h5>${item.price}</h5>
-            </div>
-
-            <div className="col-md-3 d-flex flex-column justify-content-center">
-              <button
-                className="btn btn-secondary"
-                onClick={() => handleMoveToCart(item)}
-              >
-                Move to Cart
-              </button>
-            </div>
-          </div>
-        ))
-      )}
+        </div>
+      </div>
     </div>
   );
 }
