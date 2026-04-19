@@ -1,10 +1,17 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 
-// 🇺🇸 🇪🇸 🇫🇷 SVG flags
+//flag imports
 import US from "country-flag-icons/react/3x2/US";
 import ES from "country-flag-icons/react/3x2/ES";
 import FR from "country-flag-icons/react/3x2/FR";
+import DE from "country-flag-icons/react/3x2/DE";
+import IT from "country-flag-icons/react/3x2/IT";
+import PT from "country-flag-icons/react/3x2/PT";
+import CN from "country-flag-icons/react/3x2/CN";
+import JP from "country-flag-icons/react/3x2/JP";
+import KR from "country-flag-icons/react/3x2/KR";
+import RU from "country-flag-icons/react/3x2/RU";
 
 export default function LanguageSelector() {
   const [open, setOpen] = useState(false);
@@ -12,10 +19,17 @@ export default function LanguageSelector() {
   const buttonRef = useRef();
 
   const languages = [
-    { code: "EN", name: "English", Flag: US },
-    { code: "ES", name: "Español", Flag: ES },
-    { code: "FR", name: "Français", Flag: FR },
-  ];
+  { code: "EN", name: "English", Flag: US },
+  { code: "ES", name: "Español", Flag: ES },
+  { code: "FR", name: "Français", Flag: FR },
+  { code: "DE", name: "Deutsch", Flag: DE },
+  { code: "IT", name: "Italiano", Flag: IT },
+  { code: "PT", name: "Português", Flag: PT },
+  { code: "CN", name: "中文", Flag: CN },
+  { code: "JP", name: "日本語", Flag: JP },
+  { code: "KR", name: "한국어", Flag: KR },
+  { code: "RU", name: "Русский", Flag: RU },
+];
 
   const toggleDropdown = () => setOpen(!open);
 
