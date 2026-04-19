@@ -1,17 +1,18 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 
-//flag imports
-import US from "country-flag-icons/react/3x2/US";
-import ES from "country-flag-icons/react/3x2/ES";
-import FR from "country-flag-icons/react/3x2/FR";
-import DE from "country-flag-icons/react/3x2/DE";
-import IT from "country-flag-icons/react/3x2/IT";
-import PT from "country-flag-icons/react/3x2/PT";
-import CN from "country-flag-icons/react/3x2/CN";
-import JP from "country-flag-icons/react/3x2/JP";
-import KR from "country-flag-icons/react/3x2/KR";
-import RU from "country-flag-icons/react/3x2/RU";
+import {
+  US,
+  ES,
+  FR,
+  DE,
+  IT,
+  PT,
+  CN,
+  JP,
+  KR,
+  RU,
+} from "country-flag-icons/react/3x2";
 
 export default function LanguageSelector() {
   const [open, setOpen] = useState(false);
