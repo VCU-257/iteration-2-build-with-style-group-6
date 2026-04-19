@@ -1,67 +1,180 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "./Checkout.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import SectionOutline from "../components/SectionOutline.jsx";
 
 export default function Checkout() {
-  return (
-    <div className="container py-5">
-      <div className="row justify-content-center">
-        <div className="col-12 col-md-8 col-lg-6">
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-          {/* Main Content Area */}
-          <div className="p-4 bg-light border rounded">
+  // form state for guest users
+  const [form, setForm] = useState({
+    name: "",
+    address: "",
+    city: "",
+    zip: "",
+    payment: "",
+  });
 
-            {/* 1. Order Summary Card */}
-            <div className="card mb-4 shadow-sm">
-              <div className="card-body">
-                <h5 className="card-title h6 text-uppercase text-muted">Order Summary</h5>
-                <dl className="row mb-0 mt-3">
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    setIsLoggedIn(!!user);
+  }, []);
 
-                  {/* Item List */}
-                  <dt className="col-sm-8 fw-normal text-muted">Painting</dt>
-                  <dd className="col-sm-4 text-end">$67.00</dd>
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-                  <dt className="col-sm-8 fw-normal text-muted">Giant Metal Sculpture</dt>
-                  <dd className="col-sm-4 text-end">$1000.00</dd>
+  const loggedInView = (
+    <div className="card">
 
-                  {/* Shipping and Total */}
-                  <dt className="col-sm-6 text-muted mt-2 border-top pt-2">Shipping:</dt>
-                  <dd className="col-sm-6 text-end mt-2 border-top pt-2">Free</dd>
+      <div className="card-header">
+        <ul className="list-group list-group-flush">
 
-                  <dt className="col-sm-6 fw-bold border-top pt-2 mt-2">Total:</dt>
-                  <dd className="col-sm-6 text-end fw-bold border-top pt-2 mt-2">$1067.00</dd>
-                </dl>
-              </div>
-            </div>
+          {/* ITEMS */}
+          <li className="list-group-item">
+            <h4>Items</h4>
+            <dt className="col-sm-8">Painting</dt>
+            <dd className="col-sm-4">$67.00</dd>
 
-            {/* 2. Checkout Details */}
-            <div className="mb-4">
-              <h5 className="h6 text-uppercase text-muted mb-3">Address</h5>
-              <p className="mb-0">123 ABC Street<br />Neverland, OH 23220</p>
-            </div>
+            <dt className="col-sm-8">Giant Metal Sculpture</dt>
+            <dd className="col-sm-4">$1000.00</dd>
+          </li>
 
-            <div className="mb-4">
-              <h5 className="h6 text-uppercase text-muted mb-3">Payment Method</h5>
-              <dl className="row mb-0">
-                <dt className="col-sm-4 text-muted">Card Type:</dt>
-                <dd className="col-sm-8">Visa ending in 1234</dd>
-              </dl>
-            </div>
+          {/* SHIPPING */}
+          <li className="list-group-item">
+            <h4>Shipping</h4>
+            <dt className="col-sm-8">Free</dt>
+          </li>
 
-            <div className="mb-4">
-              <h5 className="h6 text-uppercase text-muted mb-3">Time of Arrival</h5>
-              <p>Estimated: Friday, Oct 13th</p>
-            </div>
+          {/* ADDRESS */}
+          <li className="list-group-item">
+            <h4>Address</h4>
+            <p>
+              123 ABC Street<br />
+              Neverland, OH 23220
+            </p>
+          </li>
 
-            {/* 3. Checkout Button*/}
-            <div className="d-grid gap-2 mt-5">
-              <Link to="/order-confirmation" className="btn btn-primary btn-lg">
-                Checkout
-              </Link>
-            </div>
-          </div>
+          {/* PAYMENT */}
+          <li className="list-group-item">
+            <h4>Payment Method</h4>
+            <dt className="col-sm-8">Card Type:</dt>
+            <dd className="col-sm-4">Visa ending in 1234</dd>
+          </li>
+
+          {/* DELIVERY */}
+          <li className="list-group-item">
+            <h4>Estimated Delivery Date</h4>
+            <p>Friday, Oct 13th</p>
+          </li>
+
+        </ul>
+      </div>
+
+      <Link
+        className="btn btn-primary"
+        to="/order-confirmation"
+      >
+        Checkout
+      </Link>
+    </div>
+  );
+
+  const guestView = (
+  <div className="card p-3">
+
+    <h4 className="mb-3">Guest Checkout</h4>
+
+    {/* CUSTOMER INFO */}
+    <div className="mb-3">
+      <h5 className="mb-2">Shipping Information</h5>
+
+      <input
+        className="form-control mb-2"
+        name="name"
+        placeholder="Full Name"
+        value={form.name}
+        onChange={handleChange}
+      />
+
+      <input
+        className="form-control mb-2"
+        name="address"
+        placeholder="Address"
+        value={form.address}
+        onChange={handleChange}
+      />
+
+      <div className="row">
+        <div className="col-md-6 mb-2">
+          <input
+            className="form-control"
+            name="city"
+            placeholder="City"
+            value={form.city}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="col-md-6 mb-2">
+          <input
+            className="form-control"
+            name="zip"
+            placeholder="ZIP Code"
+            value={form.zip}
+            onChange={handleChange}
+          />
         </div>
       </div>
     </div>
-  )
+
+    {/* PAYMENT SECTION (SEPARATE CONTAINER) */}
+    <div className="border rounded p-3 mb-3 bg-light">
+      <h5 className="mb-3">Payment Information</h5>
+
+      <input
+        className="form-control mb-2"
+        name="payment"
+        placeholder="Card Number"
+        value={form.payment}
+        onChange={handleChange}
+      />
+
+      <div className="row">
+        <div className="col-md-6 mb-2">
+          <input
+            className="form-control"
+            placeholder="MM/YY"
+          />
+        </div>
+
+        <div className="col-md-6 mb-2">
+          <input
+            className="form-control"
+            placeholder="CVC"
+          />
+        </div>
+      </div>
+    </div>
+
+    {/* CTA */}
+    <Link
+      className="btn btn-primary w-100"
+      to="/order-confirmation"
+    >
+      Place Order
+    </Link>
+
+  </div>
+);
+
+  return (
+    <SectionOutline label="Checkout">
+      {isLoggedIn ? loggedInView : guestView}
+    </SectionOutline>
+  );
 }

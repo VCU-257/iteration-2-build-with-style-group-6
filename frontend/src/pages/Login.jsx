@@ -23,7 +23,7 @@ export default function Login() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/login", {
+      const response = await fetch(`https://iteration-2-build-with-style-group-6.onrender.com/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -42,10 +42,8 @@ export default function Login() {
 
       console.log("Login success:", data);
 
-      // ✅ Store full user object (includes token, username, email, etc.)
+      // Store full user object (includes token, username, email, etc.)
       localStorage.setItem("user", JSON.stringify(data));
-
-      alert("Login successful!");
 
       // redirect to home (or dashboard)
       navigate("/");

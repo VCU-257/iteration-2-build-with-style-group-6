@@ -10,6 +10,8 @@ import OrderConfirmation from './pages/OrderConfirmation.jsx'
 import TopNavBar from './components/NavBar/TopNavbar.jsx'
 import BottomNavBar from './components/BottomNavBar/BottomNavBar.jsx'
 import Signup from './pages/Signup.jsx'
+import Cart from './pages/Cart.jsx'
+import Orders from './pages/Orders.jsx'
 
 export default function App() {
   return (
@@ -27,6 +29,8 @@ export default function App() {
             <Route path="/account-home" element={<AccountHome />} />
             <Route path="/account" element={<Account />} />
             <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/orders" element={<Orders />} />
           </Routes>
         </main>
         <BottomNavBar />

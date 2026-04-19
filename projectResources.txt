@@ -1,0 +1,8 @@
+Render deploy:
+https://dashboard.render.com/web/srv-d7icid3bc2fs73drgl2g/logs?r=1h
+
+Github pages:
+https://github.com/VCU-257/iteration-2-build-with-style-group-6/settings/pages
+
+MongoDB Atlas:
+https://cloud.mongodb.com/v2/69e4139728a58f953db62684#/metrics/host/d51444962e2ffb04a2e0ff843fb420a1/status/fixed-network-chart
