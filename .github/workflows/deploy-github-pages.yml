@@ -5,6 +5,11 @@
 #   2. Push to `main` (or edit the branches list below to match your default branch)
 #
 # Site URL: https://<owner>.github.io/<repo>/
+#
+# SPA deep links (e.g. /repo/cart): GitHub Pages has no server rewrite to index.html.
+# After `vite build`, `npm run build` copies `dist/index.html` → `dist/404.html` so
+# unknown paths serve the app shell; React Router then reads the real URL path.
+# `public/.nojekyll` disables Jekyll so nothing strips or mangles published files.
 
 name: Deploy to GitHub Pages
 env:
