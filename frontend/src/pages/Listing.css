@@ -22,10 +22,9 @@
     color: #292929;
 }
 
-/* --- Item Added Panel Styling --- */
 .listing-page .item-added-card {
     background-color: #ffffff;
-    border: 2px solid #34936A; /* Uses your team's primary green for a success accent */
+    border: 2px solid #34936A; 
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
@@ -34,12 +33,12 @@
     color: #34936A; 
 }
 
-/* Custom Outlined Button for "Continue Shopping" */
+
 .listing-page .btn.btn-outline-custom {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     background-color: transparent;
-    border: 2px solid #F4A259; /* Peach border */
+    border: 2px solid #F4A259; 
     color: #292929;
     transition: all 0.2s ease;
 }
