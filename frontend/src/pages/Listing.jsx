@@ -7,6 +7,7 @@ import './Listing.css';
 export default function Listing() {
   const { id } = useParams(); 
   const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const [isSaved, setIsSaved] = useState(false); // New state for the wishlist button
 
   const product = sampleListings.find(item => item.id === id);
 
@@ -18,6 +19,17 @@ export default function Listing() {
       </div>
     );
   }
+
+  const handleSaveForLater = () => {
+    const currentWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    
+    if (!currentWishlist.includes(product.title)) {
+      const updatedWishlist = [...currentWishlist, product.title];
+      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    }
+    
+    setIsSaved(true);
+  };
 
   return (
     <SectionOutline label="Listing page">
@@ -48,28 +60,38 @@ export default function Listing() {
             >
               Add to Cart
             </button>
-            <button className="btn btn-secondary">
-              Save for Later
+            
+            <button 
+              className={`btn ${isSaved ? 'btn-success' : 'btn-secondary'}`}
+              onClick={handleSaveForLater}
+              disabled={isSaved}
+            >
+              {isSaved ? 'Saved to Wishlist' : 'Save for Later'}
             </button>
           </div>
 
           {isAddedToCart && (
             <div className="col-md-5">
-              <div 
-                className="bg-secondary bg-opacity-25 p-4 text-center h-100 d-flex flex-column justify-content-center align-items-center border border-secondary"
-              >
-                <h4 className="mb-5">Item Added</h4>
-                
-                <div className="d-flex flex-column gap-3 w-50">
+              <div className="item-added-card p-4 text-center h-100 d-flex flex-column justify-content-center align-items-center">
+                <h4 className="mb-4">✓ Item Added</h4>
+      
+                <p className="text-muted mb-4">
+                  {product.title} has been added to your cart.
+                </p>
+      
+                <div className="d-flex flex-column gap-3 w-75">
+                  <Link 
+                    to="/checkout" 
+                    className="btn btn-primary shadow-sm"
+                  >
+                    Proceed to Checkout
+                  </Link>
+
                   <Link 
                     to="/" 
-                    className="btn btn-light border-secondary"
+                    className="btn btn-outline-custom"
                   >
                     Continue Shopping
-                  </Link>
-                  
-                  <Link to="/checkout" className="btn btn-light border-secondary">
-                    Checkout
                   </Link>
                 </div>
               </div>
