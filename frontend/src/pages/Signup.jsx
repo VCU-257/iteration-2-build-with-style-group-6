@@ -51,12 +51,12 @@ export default function Signup() {
 
       // for now print alert, need to redirect to /home later
       console.log("Signup success:", data);
-      
-      navigate("/");
-      // alert("Signup successful!");
 
       // store token (for later auth use)
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data));
+      
+      navigate("/");
+
 
     } catch (error) {
       console.error(error);
