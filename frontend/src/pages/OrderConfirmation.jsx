@@ -35,7 +35,7 @@ export default function OrderConfirmation() {
                 </li>
                 </ul>
               </div>
-          <a class="btn btn-primary" href="/" role="button">Continue Shopping</a>
+          <Link className="btn btn-primary" to="/" role="button">Continue Shopping</Link>
 
           </div>
       </SectionOutline>

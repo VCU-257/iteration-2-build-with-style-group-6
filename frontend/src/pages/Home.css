@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Playfair+Display:wght@500;700&display=swap');
+
+.home-page {
+  background-color: #f8f9fa;
+  color: #292929;
+}
+
+.home-intro {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e6efe8 100%);
+}
+
+.home-intro p {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.home-intro h1 {
+  font-family: 'Playfair Display', serif;
+  color: #34936a;
+}

@@ -11,8 +11,8 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 export default function TopNavBar() {
   return (
-    <SectionOutline className="rounded-0 border-top-0 border-start-0 border-end-0">
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <SectionOutline className="top-navbar-shell rounded-0 border-top-0 border-start-0 border-end-0">
+      <nav className="navbar navbar-expand-lg top-navbar-theme">
         <div className="container-fluid" id="navBarContainer">
 
           {/* LEFT: logo + address */}
