@@ -42,10 +42,8 @@ export default function Login() {
 
       console.log("Login success:", data);
 
-      // ✅ Store full user object (includes token, username, email, etc.)
+      // Store full user object (includes token, username, email, etc.)
       localStorage.setItem("user", JSON.stringify(data));
-
-      alert("Login successful!");
 
       // redirect to home (or dashboard)
       navigate("/");
