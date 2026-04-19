@@ -3,7 +3,9 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./src/config/db");
 
+
 dotenv.config();
+console.log('Mongo URI:', process.env.MONGO_URI); // Add this line to see if it's loading correctly
 connectDB();
 
 const app = express();
