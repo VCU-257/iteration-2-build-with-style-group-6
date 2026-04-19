@@ -11,5 +11,5 @@ I styled and updated the functionality of the individual listing pages.
 
 ## 3. Live Site Link
 *Provide the GitHub Pages link to the specific page(s) you built.*
-* **Live URL:** https://vcu-257.github.io/iteration-2-build-with-style-group-6/listing
+* **Live URL:** https://vcu-257.github.io/iteration-2-build-with-style-group-6/listing/981
 
