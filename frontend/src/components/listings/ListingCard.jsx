@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import './ListingCard.css';
 
 /**
  * Wireframe listing card (no navigation or interactive behavior yet).
@@ -6,8 +7,8 @@ import { Link } from 'react-router-dom';
  */
 export default function ListingCard({ listing }) {
   return (
-    <Link to={`/listing/${listing.id}`} className="card h-100 border-0 shadow-sm position-relative overflow-hidden rounded">
-      <div className="ratio ratio-4x3 bg-light">
+    <Link to={`/listing/${listing.id}`} className="listing-card card h-100 border-0 shadow-sm position-relative overflow-hidden rounded">
+      <div className="ratio ratio-4x3 listing-card-image-wrap">
         <img
           src={listing.imageUrl}
           alt={listing.imageAlt ?? listing.title}
@@ -17,7 +18,7 @@ export default function ListingCard({ listing }) {
       <button
         type="button"
         disabled
-        className="btn btn-light border-0 shadow-sm position-absolute top-0 end-0 m-3 rounded-circle p-2 lh-1 z-3 text-secondary"
+        className="btn listing-card-wishlist border-0 shadow-sm position-absolute top-0 end-0 m-3 rounded-circle p-2 lh-1 z-3"
         aria-label="Wishlist (wireframe, not functional)"
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
@@ -25,9 +26,9 @@ export default function ListingCard({ listing }) {
         </svg>
       </button>
       <div className="card-body d-flex flex-column">
-        <h3 className="card-title h5 mb-1 text-body pe-4">{listing.title}</h3>
+        <h3 className="card-title h5 mb-1 listing-card-title pe-4">{listing.title}</h3>
         {listing.artist ? (
-          <p className="card-text small text-muted mb-0 flex-grow-1">{listing.artist}</p>
+          <p className="card-text small listing-card-artist mb-0 flex-grow-1">{listing.artist}</p>
         ) : (
           <div className="flex-grow-1" />
         )}
