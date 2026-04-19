@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+.listing-page h2, 
+.listing-page h4 {
+    font-family: "Playfair Display", serif;
+    font-weight: 579;
+}
+
+.listing-page .btn.btn-primary {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 435;
+    background-color: #F4A259;
+    border-color: #F4A259;
+    color: #292929;
+}
+
+.listing-page .btn.btn-primary:hover,
+.listing-page .btn.btn-primary:focus,
+.listing-page .btn.btn-primary:active {
+    background-color: #e3924b;
+    border-color: #e3924b;
+    color: #292929;
+}
