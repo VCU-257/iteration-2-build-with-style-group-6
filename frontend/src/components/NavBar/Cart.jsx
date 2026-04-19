@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Cart() {
   const navigate = useNavigate();
 
-  const itemCount = 3; // test value
+  const itemCount = 2; // fake display value
 
   const handleClick = () => {
     navigate('/cart');
