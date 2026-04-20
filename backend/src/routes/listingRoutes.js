@@ -1,9 +1,12 @@
 const express = require("express");
-import { getListings, createListing } from "../controllers/listingController.js";
+const {
+  getListings,
+  createListing,
+} = require("../controllers/listingController");
 
 const router = express.Router();
 
 router.get("/", getListings);
 router.post("/", createListing);
 
-export default router;
+module.exports = router;

@@ -1,11 +1,11 @@
-import Wishlist from "../models/Wishlist.js";
+const Wishlist = require("../models/wishlist");
 
-export const getWishlist = async (req, res) => {
+const getWishlist = async (req, res) => {
   const wishlist = await Wishlist.findOne({ userId: req.params.userId });
   res.json(wishlist);
 };
 
-export const addToWishlist = async (req, res) => {
+const addToWishlist = async (req, res) => {
   const { userId, productId } = req.body;
 
   let wishlist = await Wishlist.findOne({ userId });
@@ -21,4 +21,9 @@ export const addToWishlist = async (req, res) => {
   await wishlist.save();
 
   res.json(wishlist);
+};
+
+module.exports = {
+  getWishlist,
+  addToWishlist,
 };

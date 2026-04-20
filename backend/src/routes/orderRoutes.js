@@ -1,9 +1,10 @@
 const express = require("express");
-import {
+
+const {
   checkout,
   requestReturn,
   cancelReturn,
-} from "../controllers/orderController.js";
+} = require("../controllers/orderController");
 
 const router = express.Router();
 
@@ -11,4 +12,4 @@ router.post("/checkout", checkout);
 router.post("/:orderId/return", requestReturn);
 router.post("/:orderId/cancel-return", cancelReturn);
 
-export default router;
+module.exports = router;

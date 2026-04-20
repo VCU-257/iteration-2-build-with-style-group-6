@@ -1,12 +1,13 @@
 const express = require("express");
-import {
+
+const {
   getWishlist,
   addToWishlist,
-} from "../controllers/wishlistController.js";
+} = require("../controllers/wishlistController");
 
 const router = express.Router();
 
 router.get("/:userId", getWishlist);
 router.post("/add", addToWishlist);
 
-export default router;
+module.exports = router;

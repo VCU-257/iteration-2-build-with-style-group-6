@@ -1,8 +1,7 @@
-import Order from "../models/Order.js";
-import Cart from "../models/Cart.js";
+const Order = require("../models/order");
+const Cart = require("../models/cart");
 
-// CHECKOUT
-export const checkout = async (req, res) => {
+const checkout = async (req, res) => {
   const { userId } = req.body;
 
   const cart = await Cart.findOne({ userId });
@@ -23,8 +22,7 @@ export const checkout = async (req, res) => {
   res.json(order);
 };
 
-// RETURN REQUEST
-export const requestReturn = async (req, res) => {
+const requestReturn = async (req, res) => {
   const order = await Order.findById(req.params.orderId);
 
   order.status = "return_requested";
@@ -33,12 +31,17 @@ export const requestReturn = async (req, res) => {
   res.json(order);
 };
 
-// CANCEL RETURN
-export const cancelReturn = async (req, res) => {
+const cancelReturn = async (req, res) => {
   const order = await Order.findById(req.params.orderId);
 
   order.status = "placed";
   await order.save();
 
   res.json(order);
+};
+
+module.exports = {
+  checkout,
+  requestReturn,
+  cancelReturn,
 };

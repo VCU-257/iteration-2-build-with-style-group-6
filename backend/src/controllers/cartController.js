@@ -1,12 +1,11 @@
-import Cart from "../models/Cart.js";
+const Cart = require("../models/cart");
 
-export const getCart = async (req, res) => {
+const getCart = async (req, res) => {
   const cart = await Cart.findOne({ userId: req.params.userId });
   res.json(cart);
 };
 
-// ADD TO CART
-export const addToCart = async (req, res) => {
+const addToCart = async (req, res) => {
   const { userId, productId, price } = req.body;
 
   let cart = await Cart.findOne({ userId });
@@ -29,21 +28,26 @@ export const addToCart = async (req, res) => {
   res.json(cart);
 };
 
-// SAVE FOR LATER
-export const saveForLater = async (req, res) => {
+const saveForLater = async (req, res) => {
   const { userId, productId } = req.body;
 
   const cart = await Cart.findOne({ userId });
 
-  const itemIndex = cart.items.findIndex(
+  const index = cart.items.findIndex(
     (i) => i.productId.toString() === productId
   );
 
-  if (itemIndex !== -1) {
-    const item = cart.items.splice(itemIndex, 1)[0];
+  if (index !== -1) {
+    const item = cart.items.splice(index, 1)[0];
     cart.savedForLater.push(item);
   }
 
   await cart.save();
   res.json(cart);
+};
+
+module.exports = {
+  getCart,
+  addToCart,
+  saveForLater,
 };
