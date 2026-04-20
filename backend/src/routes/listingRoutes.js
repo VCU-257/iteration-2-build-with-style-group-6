@@ -1,4 +1,4 @@
-import express from "express";
+const express = require("express");
 import { getListings, createListing } from "../controllers/listingController.js";
 
 const router = express.Router();
