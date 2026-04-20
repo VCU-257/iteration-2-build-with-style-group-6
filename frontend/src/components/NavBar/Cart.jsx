@@ -17,7 +17,7 @@ export default function Cart() {
     >
       {/* Icon wrapper */}
       <div style={{ position: 'relative', fontSize: '22px' }}>
-        🛒
+        <i class="bi bi-cart4"></i>
 
         {itemCount > 0 && (
           <span
@@ -40,7 +40,7 @@ export default function Cart() {
       </div>
 
       {/* Optional text */}
-      <span style={{ fontSize: '14px' }}>Cart</span>
+      <span style={{ fontSize: '14px', fontWeight: '700' }}>Cart</span>
     </div>
   );
 }
