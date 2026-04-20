@@ -20,5 +20,17 @@ app.get("/", (req, res) => {
 const authRoutes = require("./src/routes/authRoutes");
 app.use("/api/auth", authRoutes);
 
+const listingRoutes = require("./src/routes/listingRoutes");
+app.use("/api/listings", listingRoutes);
+
+const cartRoutes = require("./src/routes/cartRoutes");
+app.use("/api/cart", cartRoutes);
+
+const orderRoutes = require("./src/routes/orderRoutes");
+app.use("/api/orders", orderRoutes);
+
+const wishlistRoutes = require("./src/routes/wishlistRoutes");
+app.use("/api/wishlist", wishlistRoutes);
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on ${PORT}`));
