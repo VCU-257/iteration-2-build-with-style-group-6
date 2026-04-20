@@ -66,7 +66,7 @@ export default function Listing() {
               onClick={handleSaveForLater}
               disabled={isSaved}
             >
-              {isSaved ? 'Saved to Wishlist' : 'Save for Later'}
+              {isSaved ? 'Saved to Wishlist' : 'Save to Wishlist'}
             </button>
           </div>
 
