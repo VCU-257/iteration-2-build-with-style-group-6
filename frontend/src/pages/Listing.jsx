@@ -6,8 +6,10 @@ import './Listing.css';
 
 export default function Listing() {
   const { id } = useParams(); 
+
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isSaved, setIsSaved] = useState(false); 
+  const [isSavedForLater, setIsSavedForLater] = useState(false);
 
   const product = sampleListings.find(item => item.id === id);
 
@@ -20,15 +22,26 @@ export default function Listing() {
     );
   }
 
+  const handleWishlistSave = () => {
+  const currentWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  if (!currentWishlist.includes(product.title)) {
+    const updatedWishlist = [...currentWishlist, product.title];
+    localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+  }
+
+  setIsSaved(true);
+};
+
   const handleSaveForLater = () => {
-    const currentWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    
-    if (!currentWishlist.includes(product.title)) {
-      const updatedWishlist = [...currentWishlist, product.title];
-      localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
+    const savedItems = JSON.parse(localStorage.getItem("savedForLater")) || [];
+
+    if (!savedItems.includes(product.id)) {
+      const updatedItems = [...savedItems, product.id];
+      localStorage.setItem("savedForLater", JSON.stringify(updatedItems));
     }
-    
-    setIsSaved(true);
+
+    setIsSavedForLater(true);
   };
 
   return (
@@ -39,6 +52,7 @@ export default function Listing() {
 
         <div className="row">
           
+          {/* LEFT COLUMN */}
           <div className="col-md-5">
             <img 
               src={product.imageUrl} 
@@ -51,25 +65,39 @@ export default function Listing() {
             <p className="text-muted">
               {product.description || `A beautiful piece by ${product.artist}`}
             </p>
-          </div>
 
-          <div className="col-md-2 d-flex flex-column gap-3">
+            {/* Wishlist buttonE */}
             <button 
-              className={`btn ${isAddedToCart ? 'btn-warning' : 'btn-primary'}`}
-              onClick={() => setIsAddedToCart(true)}
-            >
-              Add to Cart
-            </button>
-            
-            <button 
-              className={`btn ${isSaved ? 'btn-success' : 'btn-secondary'}`}
-              onClick={handleSaveForLater}
+              className={`btn mt-3 ${isSaved ? 'btn-success' : 'btn-custom'}`}
+              onClick={handleWishlistSave}
               disabled={isSaved}
             >
               {isSaved ? 'Saved to Wishlist' : 'Save to Wishlist'}
             </button>
           </div>
 
+          {/* MIDDLE COLUMN */}
+          <div className="col-md-2 d-flex flex-column gap-3">
+            
+            <button 
+              className={`btn ${isAddedToCart ? 'btn-warning' : 'btn-primary'}`}
+              onClick={() => setIsAddedToCart(true)}
+            >
+              {isAddedToCart ? 'Added to Cart' : 'Add to Cart'}
+            </button>
+
+            {/* Save for later now uses secondary */}
+            <button 
+              className="btn btn-secondary"
+              onClick={handleSaveForLater}
+              disabled={isSavedForLater}
+            >
+              {isSavedForLater ? 'Saved for Later' : 'Save for Later'}
+            </button>
+
+          </div>
+
+          {/* RIGHT COLUMN */}
           {isAddedToCart && (
             <div className="col-md-5">
               <div className="item-added-card p-4 text-center h-100 d-flex flex-column justify-content-center align-items-center">

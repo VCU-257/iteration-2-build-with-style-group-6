@@ -46,3 +46,9 @@
     background-color: #F4A259;
     color: #ffffff;
 }
+
+.btn-custom {
+  background-color: green; /* pick ANY color */
+  color: white;
+  border: none;
+}
