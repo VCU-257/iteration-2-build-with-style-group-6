@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema(
   {
@@ -14,10 +14,10 @@ const orderSchema = new mongoose.Schema(
 
     status: {
       type: String,
-      default: "placed", // placed | return_requested
+      default: "placed",
     },
   },
   { timestamps: true }
 );
 
-export default mongoose.model("Order", orderSchema);
+module.exports = mongoose.model("Order", orderSchema);
